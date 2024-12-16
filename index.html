@@ -1,12 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Webpage</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Intercom</title>
+  <style>
+    /* General Reset */
+{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: #fff;
+      overflow: hidden;
+    }
+    /* Background Blur Effect */
+    body::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 10%, transparent 70%);
+      filter: blur(60px);
+      z-index: 0;
+    }
+    /* Main Container */
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 90%;
+      max-width: 500px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 15px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 20px;
+    }
+    .header {
+      text-align: center;
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    .chat-box {
+      height: 300px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+    /* Chat Bubbles */
+    .message {
+      max-width: 70%;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 0.9em;
+    }
+    .user {
+      align-self: flex-end;
+      background: rgba(98, 182, 239, 0.8);
+      color: #fff;
+    }
+    .ai {
+      align-self: flex-start;
+      background: rgba(255, 255, 255, 0.3);
+      color: #000;
+    }
+    .input-container {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+    }
+    .input-container input {
+      flex-grow: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+    .input-container button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      background: #6a11cb;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .input-container button:hover {
+      background: #2575fc;
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to My Website</h1>
-    <p>This is a simple webpage hosted on GitHub Pages.</p>
+  <div class="container">
+    <div class="header">AI Intercom</div>
+    <div class="chat-box" id="chatBox">
+      <div class="message ai">Hi there! How can I help you today?</div>
+      <div class="message user">Tell me about your services.</div>
+      <div class="message ai">I am an AI here to assist you with your inquiries!</div>
+    </div>
+    <div class="input-container">
+      <input type="text" id="messageInput" placeholder="Type your message..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+  <script>
+    function sendMessage() {
+      const chatBox = document.getElementById('chatBox');
+      const messageInput = document.getElementById('messageInput');
+      const userMessage = messageInput.value;
+      if (userMessage.trim()) {
+        const userBubble = document.createElement('div');
+        userBubble.classList.add('message', 'user');
+        userBubble.textContent = userMessage;
+        chatBox.appendChild(userBubble);
+        messageInput.value = '';
+        // Simulate AI Response
+        setTimeout(() => {
+          const aiBubble = document.createElement('div');
+          aiBubble.classList.add('message', 'ai');
+          aiBubble.textContent = "I'm processing your message...";
+          chatBox.appendChild(aiBubble);
+          chatBox.scrollTop = chatBox.scrollHeight;
+        }, 500);
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }
+    }
+  </script>
 </body>
 </html>
+
