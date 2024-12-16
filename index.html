@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Intercom</title>
+  <title>AI Intercom Theme</title>
   <style>
     /* General Reset */
 {
@@ -13,13 +13,14 @@
     }
     body {
       font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: #fff;
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #6a11cb, #2575fc);
-      color: #fff;
       overflow: hidden;
+      position: relative;
     }
     /* Background Blur Effect */
     body::before {
@@ -29,7 +30,7 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 10%, transparent 70%);
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 10%, transparent 70%);
       filter: blur(60px);
       z-index: 0;
     }
@@ -38,113 +39,63 @@
       position: relative;
       z-index: 1;
       width: 90%;
-      max-width: 500px;
+      max-width: 800px;
       background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 15px;
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
       backdrop-filter: blur(10px);
-      padding: 20px;
-    }
-    .header {
+      padding: 40px;
       text-align: center;
-      font-size: 1.5em;
-      margin-bottom: 10px;
+    }
+    .title {
+      font-size: 2em;
       font-weight: bold;
+      margin-bottom: 20px;
     }
-    .chat-box {
-      height: 300px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      padding: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.05);
+    .subtitle {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      color: rgba(255, 255, 255, 0.8);
     }
-    /* Chat Bubbles */
-    .message {
-      max-width: 70%;
-      padding: 10px;
-      border-radius: 10px;
-      font-size: 0.9em;
-    }
-    .user {
-      align-self: flex-end;
-      background: rgba(98, 182, 239, 0.8);
+    .button {
+      display: inline-block;
+      padding: 15px 30px;
+      font-size: 1em;
       color: #fff;
-    }
-    .ai {
-      align-self: flex-start;
-      background: rgba(255, 255, 255, 0.3);
-      color: #000;
-    }
-    .input-container {
-      margin-top: 10px;
-      display: flex;
-      gap: 10px;
-    }
-    .input-container input {
-      flex-grow: 1;
-      padding: 10px;
-      border: none;
-      border-radius: 10px;
-      outline: none;
-      background: rgba(255, 255, 255, 0.2);
-      color: #fff;
-    }
-    .input-container button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 10px;
       background: #6a11cb;
-      color: #fff;
+      border: none;
+      border-radius: 25px;
+      text-decoration: none;
       font-weight: bold;
-      cursor: pointer;
       transition: background 0.3s;
+      box-shadow: 0 4px 15px rgba(106, 17, 203, 0.4);
     }
-    .input-container button:hover {
+    .button:hover {
       background: #2575fc;
+      box-shadow: 0 4px 15px rgba(37, 117, 252, 0.4);
+    }
+    .content {
+      margin-top: 20px;
+      text-align: left;
+      line-height: 1.8;
+      font-size: 1em;
+      color: rgba(255, 255, 255, 0.8);
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="header">AI Intercom</div>
-    <div class="chat-box" id="chatBox">
-      <div class="message ai">Hi there! How can I help you today?</div>
-      <div class="message user">Tell me about your services.</div>
-      <div class="message ai">I am an AI here to assist you with your inquiries!</div>
-    </div>
-    <div class="input-container">
-      <input type="text" id="messageInput" placeholder="Type your message..." />
-      <button onclick="sendMessage()">Send</button>
+    <div class="title">Welcome to AI Intercom</div>
+    <div class="subtitle">A sleek, modern platform designed for AI innovation</div>
+    <a href="#" class="button">Get Started</a>
+    <div class="content">
+      <p>
+        Explore the possibilities of integrating cutting-edge AI into your workflows. This site is designed
+        as a placeholder for your own content. Use this clean design to make a stunning first impression.
+      </p>
     </div>
   </div>
-  <script>
-    function sendMessage() {
-      const chatBox = document.getElementById('chatBox');
-      const messageInput = document.getElementById('messageInput');
-      const userMessage = messageInput.value;
-      if (userMessage.trim()) {
-        const userBubble = document.createElement('div');
-        userBubble.classList.add('message', 'user');
-        userBubble.textContent = userMessage;
-        chatBox.appendChild(userBubble);
-        messageInput.value = '';
-        // Simulate AI Response
-        setTimeout(() => {
-          const aiBubble = document.createElement('div');
-          aiBubble.classList.add('message', 'ai');
-          aiBubble.textContent = "I'm processing your message...";
-          chatBox.appendChild(aiBubble);
-          chatBox.scrollTop = chatBox.scrollHeight;
-        }, 500);
-        chatBox.scrollTop = chatBox.scrollHeight;
-      }
-    }
-  </script>
 </body>
 </html>
 
